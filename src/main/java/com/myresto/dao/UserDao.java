@@ -2,6 +2,7 @@ package com.myresto.dao;
 
 import java.util.List;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -63,10 +64,12 @@ public class UserDao implements IUserDao{
 	}
 
 	//Login
-	public User login(String login, String password) {
-		return jdbcTemplate.queryForObject("Select id,mail,username,address,tel,gerant from user where username='"+login+"' and password=PASSWORD('"+password+"')",(resultSet, rowNum) -> {
-			return new User(resultSet.getInt("id"),resultSet.getString("mail"),resultSet.getString("username"),resultSet.getString("address"),resultSet.getString("tel"),resultSet.getBoolean("gerant"));
-		});
+	public User login(String login, String password)  {
+			return jdbcTemplate.queryForObject("Select id,mail,username,address,tel,gerant from user where username='"+login+"' and password='"+password+"'",(resultSet, rowNum) -> {
+				return new User(resultSet.getInt("id"),resultSet.getString("mail"),resultSet.getString("username"),resultSet.getString("address"),resultSet.getString("tel"),resultSet.getBoolean("gerant"));
+			});
+	
+			
 	}
 	
 }

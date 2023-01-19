@@ -1,12 +1,10 @@
 package com.myresto.controller;
 
-import java.net.PasswordAuthentication;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,5 +46,10 @@ public class UserController {
 	@DeleteMapping("/user/delete/{id}")
 	public void delete(@PathVariable("id") int id) {
 		UserService.deleteUser(id);
+	}
+	
+	@PostMapping("/user/login")
+	public User login(@RequestBody User u) throws Exception {
+		return UserService.login(u.getMail(), u.getPassword());
 	}
 }
