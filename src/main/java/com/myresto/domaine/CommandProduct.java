@@ -17,7 +17,7 @@ public class CommandProduct {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int idCommand;
-	private int [] idProduct;
+	private int idProduct;
 	private int qte;
 	private boolean menu;
 	private double totalPrice;
@@ -50,11 +50,11 @@ public class CommandProduct {
 	public void setIdCommand(int idCommand) {
 		this.idCommand = idCommand;
 	}
-	public int [] getIdProduct() {
+	public int getIdProduct() {
 		return idProduct;
 	}
-	public void setIdProduct(int [] idProduit) {
-		this.idProduct = idProduit;
+	public void setIdProduct(int idProduct) {
+		this.idProduct = idProduct;
 	}
 	public int getQte() {
 		return qte;

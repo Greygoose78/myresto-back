@@ -11,6 +11,7 @@ import com.myresto.domaine.CommandProduct;
 @Service("CommandProductService")
 public class CommandProductService {
 
+
 	@Autowired
 	private ICommandProductDao iCommandProductDao;
 	
@@ -23,6 +24,10 @@ public class CommandProductService {
 	}
 	public List<CommandProduct> getAllCommandProduct(){
 		return iCommandProductDao.getAllCommandProduct();
+	}
+	public List<Product> getProductsByCommandId(int id) {
+		List<Integer> list = iCommandProductDao.getProductByCommandId(id);
+		iCommandProductDao.createCommandProduct(id);
 	}
 	public void createCommandProduct(CommandProduct cp) {
 		iCommandProductDao.createCommandProduct(cp);

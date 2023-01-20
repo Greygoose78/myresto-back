@@ -77,28 +77,25 @@ private CommandService commandService;
 	//create
 	@Override
 	public void createCommandProduct(CommandProduct cp) {
-		for(int idProduct:cp.getIdProduct()) {
+		System.out.println(cp);
 			Object[] arguments = new Object[4];
 			arguments[0] = cp.getIdCommand();
-			arguments[1] = idProduct;
+			arguments[1] = cp.getIdProduct();
 			arguments[2] = cp.getQte();
 			arguments[3] = cp.isMenu();
 			jdbcTemplate.update("INSERT INTO myresto.command_product(id_command,id_product,qte,menu) VALUES(?,?,?,?)",arguments);
-		}
 		
 	}
 	//update
 	@Override
 	public void updateCommandProduct(CommandProduct cp) {
-		for(int idProduct:cp.getIdProduct()) {
 		Object[] arguments = new Object[5];
 		arguments[0] = cp.getIdCommand();
-		arguments[1] = idProduct;
+		arguments[1] = cp.getIdProduct();
 		arguments[2] = cp.getQte();
 		arguments[3] = cp.isMenu();
 		arguments[4] = cp.getId();
 		jdbcTemplate.update("UPDATE myresto.command_product SET id_command=?, id_product=?,qte=?,menu=? WHERE id= ?",arguments[0],arguments[1],arguments[2], arguments[3],arguments[4]);
-		}
 	}
 	//delete
 	@Override
