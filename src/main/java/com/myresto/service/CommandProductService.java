@@ -5,29 +5,29 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myresto.dao.ICommandeProduitDao;
-import com.myresto.domaine.CommandeProduit;
+import com.myresto.dao.ICommandProductDao;
+import com.myresto.domaine.CommandProduct;
 
 @Service("CommandeProduitService")
-public class CommandeProduitService {
+public class CommandProductService {
 
 	@Autowired
-	private ICommandeProduitDao iCommandeProduitDao;
+	private ICommandProductDao iCommandeProduitDao;
 	
-	public CommandeProduitService() {
+	public CommandProductService() {
 		
 	}
-	public CommandeProduitService(ICommandeProduitDao iCommandeProduitDao) {
+	public CommandProductService(ICommandProductDao iCommandeProduitDao) {
 		super();
 		this.iCommandeProduitDao = iCommandeProduitDao;
 	}
-	public List<CommandeProduit> getAllCommandeProduit(){
+	public List<CommandProduct> getAllCommandeProduit(){
 		return iCommandeProduitDao.getAllCommandeProduit();
 	}
-	public void createCommandeProduit(CommandeProduit cp) {
+	public void createCommandeProduit(CommandProduct cp) {
 		iCommandeProduitDao.createCommandeProduit(cp);
 	}
-	public void updateCommandeProduit(CommandeProduit cp) {
+	public void updateCommandeProduit(CommandProduct cp) {
 		iCommandeProduitDao.updateCommandeProduit(cp);
 	}
 	public void deleteCommandeProduit(int id) {

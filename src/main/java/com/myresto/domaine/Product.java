@@ -9,33 +9,33 @@ import jakarta.persistence.Id;
 
 @Entity
 @EnableAutoConfiguration
-public class Produit {
+public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int idType;
-	private String libelle;
-	private double prix;
+	private String name;
+	private double price;
 	
 	//Constructors
-	public Produit(int id, int idType, String libelle, double prix) {
+	public Product(int id, int idType, String name, double price) {
 		super();
 		this.id = id;
 		this.idType = idType;
-		this.libelle = libelle;
-		this.prix = prix;
+		this.name = name;
+		this.price = price;
 	}
 	
-	public Produit() {
+	public Product() {
 		super();	
 	}
 	
-	public Produit(int idType,String libelle, double prix) {
+	public Product(int idType,String name, double price) {
 		super();
 		this.idType = idType;
-		this.libelle = libelle;
-		this.prix = prix;
+		this.name = name;
+		this.price = price;
 	}
 
 	//Getters
@@ -43,16 +43,16 @@ public class Produit {
 		return id;
 	}
 
-	public int getidType() {
+	public int getIdType() {
 		return idType;
 	}
 
-	public String getLibelle() {
-		return libelle;
+	public String getName() {
+		return name;
 	}
 
-	public double getPrix() {
-		return prix;
+	public double getPrice() {
+		return price;
 	}
 
 	//Setters
@@ -60,16 +60,16 @@ public class Produit {
 		this.id = id;
 	}
 
-	public void setidType(int idType) {
+	public void setIdType(int idType) {
 		this.idType = idType;
 	}
 
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setPrix(double prix) {
-		this.prix = prix;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 	
 	

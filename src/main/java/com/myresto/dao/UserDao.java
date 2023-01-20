@@ -22,14 +22,14 @@ public class UserDao implements IUserDao{
 		Object[] arguments = new Object[1];
 		arguments[0]= id;
 		return jdbcTemplate.queryForObject("Select * from myresto.user where user.id="+id,(resultSet, rowNum) -> {
-			return new User(resultSet.getInt("id"),resultSet.getString("mail"), resultSet.getString("password"),resultSet.getString("username"),resultSet.getString("address"),resultSet.getString("tel"),resultSet.getBoolean("gerant"));
+			return new User(resultSet.getInt("id"),resultSet.getString("mail"), resultSet.getString("password"),resultSet.getString("username"),resultSet.getString("address"),resultSet.getString("phone"),resultSet.getBoolean("manager"));
 		});
 	}
 	
 	//Read
 	public List<User> getAllUsers(){
 		return jdbcTemplate.query("Select * from myresto.user",(resultSet, rowNum) -> {
-			return new User(resultSet.getInt("id"),resultSet.getString("mail"), resultSet.getString("password"),resultSet.getString("username"),resultSet.getString("address"),resultSet.getString("tel"),resultSet.getBoolean("gerant"));
+			return new User(resultSet.getInt("id"),resultSet.getString("mail"), resultSet.getString("password"),resultSet.getString("username"),resultSet.getString("address"),resultSet.getString("phone"),resultSet.getBoolean("manager"));
 		});
 	}
 
@@ -40,9 +40,9 @@ public class UserDao implements IUserDao{
 		arguments[1] = u.getPassword();
 		arguments[2] = u.getUsername();
 		arguments[3] = u.getAddress();
-		arguments[4] = u.getTel();
-		arguments[5] = u.isGerant();		
-		jdbcTemplate.update("INSERT INTO myresto.user(mail,password,username,address,tel,gerant) VALUES(?,?,?,?,?,?)",arguments);
+		arguments[4] = u.getPhone();
+		arguments[5] = u.isManager();		
+		jdbcTemplate.update("INSERT INTO myresto.user(mail,password,username,address,phone,manager) VALUES(?,?,?,?,?,?)",arguments);
 	}
 	
 	//Update
@@ -52,9 +52,9 @@ public class UserDao implements IUserDao{
 		arguments[1] = u.getPassword();
 		arguments[2] = u.getUsername();
 		arguments[3] = u.getAddress();
-		arguments[4] = u.getTel();
-		arguments[5] = u.isGerant();
-		jdbcTemplate.update("UPDATE myresto.user SET mail=?, password=?, username=?, address=?, tel=?, gerant=? where user.id="+u.getId(),arguments);
+		arguments[4] = u.getPhone();
+		arguments[5] = u.isManager();
+		jdbcTemplate.update("UPDATE myresto.user SET mail=?, password=?, username=?, address=?, phone=?, manager=? where user.id="+u.getId(),arguments);
 	}
 
 	//Delete
@@ -64,8 +64,8 @@ public class UserDao implements IUserDao{
 
 	//Login
 	public User login(String login, String password) {
-		return jdbcTemplate.queryForObject("Select id,mail,username,address,tel,gerant from user where username='"+login+"' and password=PASSWORD('"+password+"')",(resultSet, rowNum) -> {
-			return new User(resultSet.getInt("id"),resultSet.getString("mail"),resultSet.getString("username"),resultSet.getString("address"),resultSet.getString("tel"),resultSet.getBoolean("gerant"));
+		return jdbcTemplate.queryForObject("Select id,mail,username,address,phone,manager from user where username='"+login+"' and password=PASSWORD('"+password+"')",(resultSet, rowNum) -> {
+			return new User(resultSet.getInt("id"),resultSet.getString("mail"),resultSet.getString("username"),resultSet.getString("address"),resultSet.getString("phone"),resultSet.getBoolean("manager"));
 		});
 	}
 	

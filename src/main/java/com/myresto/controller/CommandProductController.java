@@ -9,21 +9,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.myresto.domaine.CommandeProduit;
-import com.myresto.service.CommandeProduitService;
+import com.myresto.domaine.CommandProduct;
+import com.myresto.service.CommandProductService;
 
-public class CommandeProduitController {
+public class CommandProductController {
 	
 	@Autowired
-	private CommandeProduitService commandeProduitService;
+	private CommandProductService commandeProduitService;
 	
 	@PostMapping("/CommandeProduit")
-	public void create(@RequestBody CommandeProduit cp) {
+	public void create(@RequestBody CommandProduct cp) {
 		commandeProduitService.createCommandeProduit(cp);;
 	}
 	
 	@PutMapping("/CommandeProduit")
-	public void update(@RequestBody CommandeProduit cp) {
+	public void update(@RequestBody CommandProduct cp) {
 		commandeProduitService.updateCommandeProduit(cp);
 	}
 	
@@ -33,7 +33,7 @@ public class CommandeProduitController {
 	}
 	
 	@GetMapping("/CommandeProduit")
-	public List<CommandeProduit> get(){
+	public List<CommandProduct> get(){
 		return commandeProduitService.getAllCommandeProduit();
 	}
 }

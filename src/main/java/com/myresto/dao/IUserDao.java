@@ -1,7 +1,6 @@
 package com.myresto.dao;
 
 import java.util.List;
-
 import com.myresto.domaine.User;
 
 public interface IUserDao {

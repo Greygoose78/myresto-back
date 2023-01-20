@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 
 @Entity
 @EnableAutoConfiguration
-public class CommandeProduit {
+public class CommandProduct {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -21,15 +21,15 @@ public class CommandeProduit {
 	private int qte;
 	private boolean menu;
 	private double prixTotal;
-	List<Produit> produits= new ArrayList<Produit>();
-	Commande commandes;
+	List<Product> produits= new ArrayList<Product>();
+	Command commands;
 	
 	//Constructors
-	public CommandeProduit() {
+	public CommandProduct() {
 		super();
 	}
 	
-	public CommandeProduit(int id, int idCommande, int qte, boolean menu) {
+	public CommandProduct(int id, int idCommande, int qte, boolean menu) {
 		super();
 		this.id = id;
 		this.idCommande = idCommande;
@@ -69,20 +69,20 @@ public class CommandeProduit {
 		this.menu = menu;
 	}
 
-	public List<Produit> getProduits() {
+	public List<Product> getProduits() {
 		return produits;
 	}
 
-	public void setProduits(List<Produit> produits) {
+	public void setProduits(List<Product> produits) {
 		this.produits = produits;
 	}
 
-	public Commande getCommandes() {
-		return commandes;
+	public Command getCommands() {
+		return commands;
 	}
 
-	public void setCommandes(Commande commandes) {
-		this.commandes = commandes;
+	public void setCommands(Command commands) {
+		this.commands = commands;
 	}
 
 	public double getPrixTotal() {

@@ -18,44 +18,46 @@ public class User {
 	private String password;
 	private String username;
 	private String address;
-	private String tel;
-	private boolean gerant;
+	private String phone;
+	private boolean manager;
 
 	
-	public User(int id, String mail, String password, String username, String address, String tel, boolean gerant) {
-		super();
-		this.id = id;
-		this.mail = mail;
-		this.password = password;
-		this.username = username;
-		this.address = address;
-		this.tel = tel;
-		this.gerant = gerant;
-	}
 	
 	public User() {
 		
 	}
 	
-	public User(int id, String mail, String username, String address, String tel, boolean gerant) {
+	public User(int id, String mail, String username, String address, String phone, boolean manager) {
 		super();
 		this.id = id;
 		this.mail = mail;
 		this.username = username;
 		this.address = address;
-		this.tel = tel;
-		this.gerant = gerant;
+		this.phone = phone;
+		this.manager = manager;
 	}
 	
-	public User(String mail, String password, String username, String address, String tel, boolean gerant) {
+	public User(String mail, String password, String username, String address, String phone, boolean manager) {
 		super();
 		this.mail = mail;
 		this.password = password;
 		this.username = username;
 		this.address = address;
-		this.tel = tel;
-		this.gerant = gerant;
+		this.phone = phone;
+		this.manager = manager;
 	}
+
+	public User(int id, String mail, String password, String username, String address, String phone, boolean manager) {
+		super();
+		this.id = id;
+		this.mail = mail;
+		this.password = password;
+		this.username = username;
+		this.address = address;
+		this.phone = phone;
+		this.manager = manager;
+	}
+
 
 	//Getters
 	public int getId() {
@@ -83,13 +85,13 @@ public class User {
 	}
 
 
-	public String getTel() {
-		return tel;
+	public String getPhone() {
+		return phone;
 	}
 
 
-	public boolean isGerant() {
-		return gerant;
+	public boolean isManager() {
+		return manager;
 	}
 
 	
@@ -119,16 +121,12 @@ public class User {
 	}
 
 
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-
-	public void setGerant(boolean gerant) {
-		this.gerant = gerant;
+	public void setManger(boolean manager) {
+		this.manager = manager;
 	}
-
-	
-	
 	
 }

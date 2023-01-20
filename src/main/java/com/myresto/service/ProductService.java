@@ -5,35 +5,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myresto.dao.IProduitDao;
-import com.myresto.domaine.Produit;
+import com.myresto.dao.IProductDao;
+import com.myresto.domaine.Product;
 
 @Service("ProduitService")
-public class ProduitService {
+public class ProductService {
 	
 	@Autowired
-	private IProduitDao iProduitDao;
+	private IProductDao iProduitDao;
 	
-	public ProduitService() {
+	public ProductService() {
 	}
 
-	public ProduitService(IProduitDao iProduitDao) {
+	public ProductService(IProductDao iProduitDao) {
 		super();
 		this.iProduitDao = iProduitDao;
 	}
 	
-	public List<Produit> getAllProducts(){
+	public List<Product> getAllProducts(){
 		return iProduitDao.getAllProducts();
 	}
 
-	public Produit getProductById(int id){
+	public Product getProductById(int id){
 		return iProduitDao.getProductById(id);
 	}
 	
-	public void createProduct(Produit p) {
+	public void createProduct(Product p) {
 		iProduitDao.createProduct(p);
 	}
-	public void updateProduct(Produit p) {
+	public void updateProduct(Product p) {
 		iProduitDao.updateProduct(p);
 	}
 	public void deleteProduct(int id) {

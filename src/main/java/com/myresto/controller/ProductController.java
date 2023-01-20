@@ -12,34 +12,34 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.myresto.domaine.Produit;
-import com.myresto.service.ProduitService;
+import com.myresto.domaine.Product;
+import com.myresto.service.ProductService;
 
 @RestController
 @CrossOrigin
-public class ProduitController {
+public class ProductController {
 	
 	@Autowired
-	private ProduitService produitService;
+	private ProductService produitService;
 
 	
 	@GetMapping("/products")
-	public List<Produit> get(){
+	public List<Product> get(){
 		return produitService.getAllProducts();
 	}
 
 	@GetMapping("/product/{id}")
-	public Produit getProductById(@PathVariable("id") int id){
+	public Product getProductById(@PathVariable("id") int id){
 		return produitService.getProductById(id);
 	}
 
 	@PostMapping("/product/create")
-	public void createProduct(@RequestBody Produit p) {
+	public void createProduct(@RequestBody Product p) {
 		produitService.createProduct(p);
 	}
 		
 	@PutMapping("/product/update")
-	public void update(@RequestBody Produit p) {
+	public void update(@RequestBody Product p) {
 		produitService.updateProduct(p);
 	}
 	

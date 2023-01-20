@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-public class Commande {
+public class Command {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -17,14 +17,19 @@ public class Commande {
 	
 	//Constructors
 
-	public Commande() {
+	public Command() {
 		super();
 	}
-
-
-		public Commande(int id, int idUser, Date date) {
+	
+	public Command(int id, int idUser, Date date) {
 		super();
 		this.id = id;
+		this.idUser = idUser;
+		this.date = date;
+	}
+
+	public Command(int idUser, Date date) {
+		super();
 		this.idUser = idUser;
 		this.date = date;
 	}
@@ -37,13 +42,9 @@ public class Commande {
 	return idUser;
 	}
 
-
-
 	public Date getDate() {
 		return date;
 	}
-
-
 	
 	//setters
 	public void setId(int id) {
