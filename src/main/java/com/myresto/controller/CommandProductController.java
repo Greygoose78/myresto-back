@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myresto.domaine.CommandProduct;
+import com.myresto.domaine.Product;
 import com.myresto.service.CommandProductService;
 
 @RestController
@@ -27,8 +29,8 @@ public class CommandProductController {
 	}
 
 	@GetMapping("command/product/{id}")
-	public Product getProductById(@PathVariable("id") int id){
-		return commandProductService.;
+	public List<Product> getProductById(@PathVariable("id") int id){
+		return commandProductService.getProductsByCommandId(id);
 	}
 
 	@PostMapping("/command/product/create")
