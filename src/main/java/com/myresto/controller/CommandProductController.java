@@ -19,21 +19,21 @@ public class CommandProductController {
 	
 	@PostMapping("/CommandeProduit")
 	public void create(@RequestBody CommandProduct cp) {
-		commandeProduitService.createCommandeProduit(cp);;
+		commandeProduitService.createCommandProduct(cp);;
 	}
 	
 	@PutMapping("/CommandeProduit")
 	public void update(@RequestBody CommandProduct cp) {
-		commandeProduitService.updateCommandeProduit(cp);
+		commandeProduitService.updateCommandProduct(cp);
 	}
 	
 	@DeleteMapping("/CommandeProduit")
 	public void delete(@RequestBody int id) {
-		commandeProduitService.deleteCommandeProduit(id);;
+		commandeProduitService.deleteCommandProduct(id);;
 	}
 	
 	@GetMapping("/CommandeProduit")
 	public List<CommandProduct> get(){
-		return commandeProduitService.getAllCommandeProduit();
+		return commandeProduitService.getAllCommandProduct();
 	}
 }
