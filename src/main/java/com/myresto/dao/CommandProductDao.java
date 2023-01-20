@@ -20,31 +20,29 @@ public class CommandProductDao implements ICommandProductDao {
 @Autowired
 private JdbcTemplate jdbcTemplate;
 @Autowired
-private CommandService commandeService;
+private CommandService commandService;
 	public CommandProductDao(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate =jdbcTemplate;
 	}
 	//read
-	/* @Override
-	public List<CommandProduct> getAllCommandeProduit() {
+	@Override
+	public List<CommandProduct> getAllCommandProduct() {
 		return jdbcTemplate.query("select * from myresto.commandeproduit", (resultSet, rowNum)->{
-			CommandProduct cp = new CommandProduct(resultSet.getInt("id"),resultSet.getInt("idCommande"),resultSet.getInt("qte"),resultSet.getBoolean("menu"));
-			Command cmd = commandeService.getCommandById(resultSet.getInt("idCommande"));
-			System.out.println("this commande id:"+resultSet.getInt("idCommande"));
-			List<Integer> produitsId=getProduitByCommandeId(resultSet.getInt("idCommande"));
-			for(Integer i:produitsId) {
-				System.out.println("id produit:"+i);
-			}
-			List<Product> produitsCommande=getAllProduitsByCommande(produitsId);
-			int prixTotal=0;
-			for(Product p:produitsCommande) {
-				prixTotal+=p.getPrix();
+			CommandProduct cp = new CommandProduct(resultSet.getInt("id"),resultSet.getInt("idCommand"),resultSet.getInt("qte"),resultSet.getBoolean("menu"));
+			Command cmd = commandService.getCommandById(resultSet.getInt("idCommand"));
+
+
+			List<Integer> produitsId=getProductByCommandId(resultSet.getInt("idCommand"));
+			List<Product> productsCommand=getAllProductsByCommand(produitsId);
+			double totalPrice=0;
+			for(Product p:productsCommand) {
+				totalPrice+=p.getPrice();
 			
-			if(prixTotal>0 && resultSet.getBoolean("menu") ) {
-				prixTotal=(int) (prixTotal-(0.5 *p.getPrix()));
+				if(totalPrice>0 && resultSet.getBoolean("menu") ) {
+					totalPrice= totalPrice-(0.8 *p.getPrice());
+				}
 			}
-			}
-			cp.setPrixTotal(prixTotal);
+			cp.setTotalPrice(totalPrice);
 			cp.setProducts(productsCommand);
 			cp.setCommands(cmd);
 			
@@ -106,26 +104,6 @@ private CommandService commandeService;
 	@Override
 	public void deleteCommandeProduit(int id) {
 		jdbcTemplate.execute("DELETE FROM myresto.commandeProduit where commandeProduit.id="+id);
-		
-	} */
-	@Override
-	public List<CommandProduct> getAllCommandeProduit() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void createCommandeProduit(CommandProduct cp) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void updateCommandeProduit(CommandProduct cp) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void deleteCommandeProduit(int id) {
-		// TODO Auto-generated method stub
 		
 	}
 

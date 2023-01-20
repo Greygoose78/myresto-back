@@ -6,14 +6,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 public class Command {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	private int id;
 	private int idUser;
 	private Date date;
-	
-	
-	
 	
 	//Constructors
 

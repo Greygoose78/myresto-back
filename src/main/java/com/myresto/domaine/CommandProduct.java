@@ -16,12 +16,12 @@ public class CommandProduct {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private int idCommande;
-	private int [] idProduit;
+	private int idCommand;
+	private int [] idProduct;
 	private int qte;
 	private boolean menu;
-	private double prixTotal;
-	List<Product> produits= new ArrayList<Product>();
+	private double totalPrice;
+	List<Product> products = new ArrayList<Product>();
 	Command commands;
 	
 	//Constructors
@@ -29,10 +29,10 @@ public class CommandProduct {
 		super();
 	}
 	
-	public CommandProduct(int id, int idCommande, int qte, boolean menu) {
+	public CommandProduct(int id, int idCommand, int qte, boolean menu) {
 		super();
 		this.id = id;
-		this.idCommande = idCommande;
+		this.idCommand = idCommand;
 		this.qte = qte;
 		this.menu = menu;
 	}
@@ -44,17 +44,17 @@ public class CommandProduct {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getIdCommande() {
-		return idCommande;
+	public int getIdCommand() {
+		return idCommand;
 	}
-	public void setIdCommande(int idCommande) {
-		this.idCommande = idCommande;
+	public void setIdCommand(int idCommand) {
+		this.idCommand = idCommand;
 	}
-	public int [] getIdProduit() {
-		return idProduit;
+	public int [] getIdProduct() {
+		return idProduct;
 	}
-	public void setIdProduit(int [] idProduit) {
-		this.idProduit = idProduit;
+	public void setIdProduct(int [] idProduit) {
+		this.idProduct = idProduit;
 	}
 	public int getQte() {
 		return qte;
@@ -69,12 +69,12 @@ public class CommandProduct {
 		this.menu = menu;
 	}
 
-	public List<Product> getProduits() {
-		return produits;
+	public List<Product> getProducts() {
+		return this.products;
 	}
 
-	public void setProduits(List<Product> produits) {
-		this.produits = produits;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 	public Command getCommands() {
@@ -85,12 +85,12 @@ public class CommandProduct {
 		this.commands = commands;
 	}
 
-	public double getPrixTotal() {
-		return prixTotal;
+	public double getTotalPrice() {
+		return totalPrice;
 	}
 
-	public void setPrixTotal(double prixTotal) {
-		this.prixTotal = prixTotal;
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
 }
