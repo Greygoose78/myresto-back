@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.myresto.dao.ICommandProductDao;
 import com.myresto.domaine.CommandProduct;
+import com.myresto.domaine.Product;
 
 @Service("CommandProductService")
 public class CommandProductService {
@@ -27,7 +28,7 @@ public class CommandProductService {
 	}
 	public List<Product> getProductsByCommandId(int id) {
 		List<Integer> list = iCommandProductDao.getProductByCommandId(id);
-		iCommandProductDao.createCommandProduct(id);
+		return iCommandProductDao.getAllProductsByCommand(list);
 	}
 	public void createCommandProduct(CommandProduct cp) {
 		iCommandProductDao.createCommandProduct(cp);
