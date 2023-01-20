@@ -27,12 +27,12 @@ private CommandService commandService;
 	//read
 	@Override
 	public List<CommandProduct> getAllCommandProduct() {
-		return jdbcTemplate.query("select * from myresto.commandeproduit", (resultSet, rowNum)->{
-			CommandProduct cp = new CommandProduct(resultSet.getInt("id"),resultSet.getInt("idCommand"),resultSet.getInt("qte"),resultSet.getBoolean("menu"));
-			Command cmd = commandService.getCommandById(resultSet.getInt("idCommand"));
+		return jdbcTemplate.query("select * from myresto.command_product", (resultSet, rowNum)->{
+			CommandProduct cp = new CommandProduct(resultSet.getInt("id"),resultSet.getInt("id_command"),resultSet.getInt("qte"),resultSet.getBoolean("menu"));
+			Command cmd = commandService.getCommandById(resultSet.getInt("id_command"));
 
 
-			List<Integer> productsId=getProductByCommandId(resultSet.getInt("idCommand"));
+			List<Integer> productsId=getProductByCommandId(resultSet.getInt("id_command"));
 			List<Product> productsCommand=getAllProductsByCommand(productsId);
 			double totalPrice=0;
 			for(Product p:productsCommand) {
@@ -55,8 +55,8 @@ private CommandService commandService;
 	public List<Integer> getProductByCommandId(int id ) {
 		Object[] arguments = new Object[1];
 		arguments[0]= id;
-		return  jdbcTemplate.query("select idProduit  from myresto.commandeproduit where idCommande =?",arguments, (resultSet, RowNum) ->{
-			return resultSet.getInt("idProduit");
+		return  jdbcTemplate.query("select id_product  from myresto.command_product where id_command =?",arguments, (resultSet, rowNum) ->{
+			return resultSet.getInt("id_product");
 		});
 	}
 	//permet de retourner la liste des produits d'une commande
@@ -67,43 +67,43 @@ private CommandService commandService;
 			for(int i=0;i<listId.size();i++) {
 				arguments[i]= listId.get(i);
 			}
-			List<Product> produits = jdbcTemplate.query(
-					String.format("SELECT * FROM myresto.produit WHERE id IN (%s)", inSql), 
+			List<Product> products = jdbcTemplate.query(
+					String.format("SELECT * FROM myresto.product WHERE id IN (%s)", inSql), 
 					listId.toArray(), 
-					 (rs, rowNum) -> new Product(rs.getInt("id"), rs.getInt("id_type"), rs.getString("libelle"),rs.getDouble("prix")));
-			return produits;
+					 (rs, rowNum) -> new Product(rs.getInt("id"), rs.getInt("id_type"), rs.getString("name"),rs.getDouble("price")));
+			return products;
 			
 		}
 	//create
 	@Override
 	public void createCommandProduct(CommandProduct cp) {
-		for(int idProduit:cp.getIdProduct()) {
+		for(int idProduct:cp.getIdProduct()) {
 			Object[] arguments = new Object[4];
 			arguments[0] = cp.getIdCommand();
-			arguments[1] = idProduit;
+			arguments[1] = idProduct;
 			arguments[2] = cp.getQte();
 			arguments[3] = cp.isMenu();
-			jdbcTemplate.update("INSERT INTO myresto.commandeProduit(idCommande,idProduit,qte,menu) VALUES(?,?,?,?)",arguments);
+			jdbcTemplate.update("INSERT INTO myresto.command_product(id_command,id_product,qte,menu) VALUES(?,?,?,?)",arguments);
 		}
 		
 	}
 	//update
 	@Override
 	public void updateCommandProduct(CommandProduct cp) {
-		for(int idProduit:cp.getIdProduct()) {
+		for(int idProduct:cp.getIdProduct()) {
 		Object[] arguments = new Object[5];
 		arguments[0] = cp.getIdCommand();
-		arguments[1] = idProduit;
+		arguments[1] = idProduct;
 		arguments[2] = cp.getQte();
 		arguments[3] = cp.isMenu();
 		arguments[4] = cp.getId();
-		jdbcTemplate.update("UPDATE myresto.commandeproduit SET idCommande=?, idProduit=?,qte=?,menu=? WHERE id= ?",arguments[0],arguments[1],arguments[2], arguments[3],arguments[4]);
+		jdbcTemplate.update("UPDATE myresto.command_product SET id_command=?, id_product=?,qte=?,menu=? WHERE id= ?",arguments[0],arguments[1],arguments[2], arguments[3],arguments[4]);
 		}
 	}
 	//delete
 	@Override
 	public void deleteCommandProduct(int id) {
-		jdbcTemplate.execute("DELETE FROM myresto.commandeProduit where commandeProduit.id="+id);
+		jdbcTemplate.execute("DELETE FROM myresto.command_product where command_product.id="+id);
 		
 	}
 

@@ -8,30 +8,30 @@ import org.springframework.stereotype.Service;
 import com.myresto.dao.ICommandProductDao;
 import com.myresto.domaine.CommandProduct;
 
-@Service("CommandeProduitService")
+@Service("CommandProductService")
 public class CommandProductService {
 
 	@Autowired
-	private ICommandProductDao iCommandeProduitDao;
+	private ICommandProductDao iCommandProductDao;
 	
 	public CommandProductService() {
 		
 	}
 	public CommandProductService(ICommandProductDao iCommandeProduitDao) {
 		super();
-		this.iCommandeProduitDao = iCommandeProduitDao;
+		this.iCommandProductDao = iCommandeProduitDao;
 	}
 	public List<CommandProduct> getAllCommandProduct(){
-		return iCommandeProduitDao.getAllCommandProduct();
+		return iCommandProductDao.getAllCommandProduct();
 	}
 	public void createCommandProduct(CommandProduct cp) {
-		iCommandeProduitDao.createCommandProduct(cp);
+		iCommandProductDao.createCommandProduct(cp);
 	}
 	public void updateCommandProduct(CommandProduct cp) {
-		iCommandeProduitDao.updateCommandProduct(cp);
+		iCommandProductDao.updateCommandProduct(cp);
 	}
 	public void deleteCommandProduct(int id) {
-		iCommandeProduitDao.deleteCommandProduct(id);
+		iCommandProductDao.deleteCommandProduct(id);
 	}
 }
 	
