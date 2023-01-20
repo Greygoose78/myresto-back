@@ -26,6 +26,11 @@ public class CommandProductController {
 		return commandProductService.getAllCommandProduct();
 	}
 
+	@GetMapping("command/product/{id}")
+	public Product getProductById(@PathVariable("id") int id){
+		return commandProductService.;
+	}
+
 	@PostMapping("/command/product/create")
 	public void create(@RequestBody CommandProduct cp) {
 		commandProductService.createCommandProduct(cp);;
