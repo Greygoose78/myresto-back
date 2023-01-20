@@ -32,8 +32,8 @@ private CommandService commandService;
 			Command cmd = commandService.getCommandById(resultSet.getInt("idCommand"));
 
 
-			List<Integer> produitsId=getProductByCommandId(resultSet.getInt("idCommand"));
-			List<Product> productsCommand=getAllProductsByCommand(produitsId);
+			List<Integer> productsId=getProductByCommandId(resultSet.getInt("idCommand"));
+			List<Product> productsCommand=getAllProductsByCommand(productsId);
 			double totalPrice=0;
 			for(Product p:productsCommand) {
 				totalPrice+=p.getPrice();
