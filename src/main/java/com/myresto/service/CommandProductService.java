@@ -22,16 +22,16 @@ public class CommandProductService {
 		this.iCommandeProduitDao = iCommandeProduitDao;
 	}
 	public List<CommandProduct> getAllCommandeProduit(){
-		return iCommandeProduitDao.getAllCommandeProduit();
+		return iCommandeProduitDao.getAllCommandProduct();
 	}
 	public void createCommandeProduit(CommandProduct cp) {
-		iCommandeProduitDao.createCommandeProduit(cp);
+		iCommandeProduitDao.createCommandProduct(cp);
 	}
 	public void updateCommandeProduit(CommandProduct cp) {
-		iCommandeProduitDao.updateCommandeProduit(cp);
+		iCommandeProduitDao.updateCommandProduct(cp);
 	}
 	public void deleteCommandeProduit(int id) {
-		iCommandeProduitDao.deleteCommandeProduit(id);
+		iCommandeProduitDao.deleteCommandProduct(id);
 	}
 }
 	

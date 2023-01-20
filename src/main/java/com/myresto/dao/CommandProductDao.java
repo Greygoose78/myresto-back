@@ -52,7 +52,7 @@ private CommandService commandService;
 	
 	//permet de retourner la liste des id des produits d'une commande
 	@SuppressWarnings("deprecation")
-	public List<Integer> getProduitByCommandeId(int id ) {
+	public List<Integer> getProductByCommandId(int id ) {
 		Object[] arguments = new Object[1];
 		arguments[0]= id;
 		return  jdbcTemplate.query("select idProduit  from myresto.commandeproduit where idCommande =?",arguments, (resultSet, RowNum) ->{
@@ -61,7 +61,7 @@ private CommandService commandService;
 	}
 	//permet de retourner la liste des produits d'une commande
 		@SuppressWarnings("deprecation")
-		public List<Product> getAllProduitsByCommande(List<Integer> listId) {
+		public List<Product> getAllProductsByCommand(List<Integer> listId) {
 			Object[] arguments = new Object[listId.size()];
 			 String inSql = String.join(",", Collections.nCopies(listId.size(), "?"));
 			for(int i=0;i<listId.size();i++) {
@@ -76,10 +76,10 @@ private CommandService commandService;
 		}
 	//create
 	@Override
-	public void createCommandeProduit(CommandProduct cp) {
-		for(int idProduit:cp.getIdProduit()) {
+	public void createCommandProduct(CommandProduct cp) {
+		for(int idProduit:cp.getIdProduct()) {
 			Object[] arguments = new Object[4];
-			arguments[0] = cp.getIdCommande();
+			arguments[0] = cp.getIdCommand();
 			arguments[1] = idProduit;
 			arguments[2] = cp.getQte();
 			arguments[3] = cp.isMenu();
@@ -89,10 +89,10 @@ private CommandService commandService;
 	}
 	//update
 	@Override
-	public void updateCommandeProduit(CommandProduct cp) {
-		for(int idProduit:cp.getIdProduit()) {
+	public void updateCommandProduct(CommandProduct cp) {
+		for(int idProduit:cp.getIdProduct()) {
 		Object[] arguments = new Object[5];
-		arguments[0] = cp.getIdCommande();
+		arguments[0] = cp.getIdCommand();
 		arguments[1] = idProduit;
 		arguments[2] = cp.getQte();
 		arguments[3] = cp.isMenu();
@@ -102,7 +102,7 @@ private CommandService commandService;
 	}
 	//delete
 	@Override
-	public void deleteCommandeProduit(int id) {
+	public void deleteCommandProduct(int id) {
 		jdbcTemplate.execute("DELETE FROM myresto.commandeProduit where commandeProduit.id="+id);
 		
 	}
